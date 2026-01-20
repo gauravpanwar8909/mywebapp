@@ -11,8 +11,14 @@
     <version>1.0</version>
     <packaging>war</packaging>
 
+    <!-- Java version -->
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
+
     <dependencies>
-        <!-- Servlet API -->
+        <!-- Servlet API (Tomcat provides this) -->
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
@@ -23,6 +29,22 @@
 
     <build>
         <finalName>mywebapp</finalName>
+
+        <plugins>
+            <!-- Compiler plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+            </plugin>
+
+            <!-- WAR plugin (THIS FIXES YOUR ERROR) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.2</version>
+            </plugin>
+        </plugins>
     </build>
 
 </project>
